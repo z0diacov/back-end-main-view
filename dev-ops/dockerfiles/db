@@ -1,0 +1,15 @@
+FROM mysql:8.0-debian
+
+RUN apt-get update && apt-get install -y logrotate cron && rm -rf /var/lib/apt/lists/*
+
+COPY configs/my.cnf /etc/mysql/my.cnf
+RUN chmod 644 /etc/mysql/my.cnf
+
+COPY configs/logrotate.conf /etc/logrotate.d/mysql
+RUN chmod 644 /etc/logrotate.d/mysql
+
+RUN echo "0 * * * * /usr/sbin/logrotate /etc/logrotate.d/mysql" >> /etc/crontab
+
+COPY scripts/init.sql /docker-entrypoint-initdb.d/
+
+CMD service cron start && docker-entrypoint.sh mysqld

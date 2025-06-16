@@ -1,0 +1,2 @@
+The entire architecture of the project was designed and implemented by me. I acted as the team lead and was fully responsible for the technical side.
+This server code was published with permission from the company for which it was originally developed. While the core product remains proprietary, I was granted verbal authorization to share supporting components such as the backend logic. The project is available for educational and demonstration purposes only and does not include any confidential or internal business logic.

@@ -1,0 +1,19 @@
+FROM ubuntu:22.04
+
+RUN apt-get update
+
+RUN apt-get -y install python3
+RUN apt-get -y install python3-pip
+RUN apt-get -y install python3-venv
+
+RUN python3 -m venv env
+
+COPY ./requirements.txt /requirements.txt
+
+RUN /env/bin/pip install -r /requirements.txt
+
+COPY . /
+
+EXPOSE 8000
+
+CMD ["/env/bin/uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

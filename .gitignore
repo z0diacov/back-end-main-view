@@ -1,0 +1,7 @@
+todo.txt
+__pycache__
+venv
+.pytest_cache
+MAIN/logs/*
+!MAIN/logs/config
+redis_db_struct.txt
